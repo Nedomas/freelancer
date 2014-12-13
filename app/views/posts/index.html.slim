@@ -1,0 +1,16 @@
+h1 Posts
+
+table
+  tr
+    th Title
+    th Tags
+    th Description
+    th Portal
+  - @posts.each do |post|
+    tr
+      td
+        a href=post.url target='_blank'
+          = post.title
+      td = post.tags
+      td = post.description
+      td = post.portal.capitalize
