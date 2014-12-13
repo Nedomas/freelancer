@@ -9,6 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+  <%= link_to "All posts", posts_path %>
+  <%= link_to "Buckets", buckets_path %>
+
   <%= render "flashes" -%>
   <%= yield %>
   <%= render "javascript" %>

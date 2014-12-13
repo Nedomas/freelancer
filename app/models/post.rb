@@ -14,6 +14,12 @@ class Post < ActiveRecord::Base
   end
 
   def tags
-    data['hiddenlink_link_list/_text'].join(', ')
+    raw_tags.join(', ')
+  end
+
+  private
+
+  def raw_tags
+    data['hiddenlink_link_list/_text'] || data['link_list_1/_text']
   end
 end

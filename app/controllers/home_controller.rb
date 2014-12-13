@@ -3,7 +3,7 @@ require './lib/importio.rb'
 class HomeController < ApplicationController
   IMPORT_GUID = '53486538-e372-467f-825a-ba3a78008aa9'
   IMPORT_API_KEY = 'JhC8d+xdlUCgS+yIjQ2MuSWTVUuBhP7LTXnvLi8Ri5kSOHgm1FbjZKr7OwlvlwyfZu44LTuaN4mK0RGLu8w1wA=='
-  FREELANCER_GUID = '3ae07454-b422-4073-b30c-ea55d6ac3272'
+  FREELANCER_GUID = '100b89a2-0c48-4ef0-9d14-492b1290f243'
 
   def index
     client = Importio.new(IMPORT_GUID, IMPORT_API_KEY)
@@ -21,6 +21,9 @@ class HomeController < ApplicationController
     callback)
 
     client.join
+
+    import_data
+
     client.disconnect
   end
 
@@ -56,7 +59,6 @@ class HomeController < ApplicationController
           # We got a message and it was not an error, so we can process the data
           # puts 'Got data!'
           @message = message
-          import_data
           # import_data(message)
           # puts JSON.pretty_generate(message['data'])
         end
