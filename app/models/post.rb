@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   end
 
   def tags
-    raw_tags.join(', ')
+    Array(raw_tags).join(', ')
   end
 
   private

@@ -1,6 +1,6 @@
 require './lib/importio.rb'
 
-class HomeController < ApplicationController
+class UpdateController < ApplicationController
   IMPORT_GUID = '53486538-e372-467f-825a-ba3a78008aa9'
   IMPORT_API_KEY = 'JhC8d+xdlUCgS+yIjQ2MuSWTVUuBhP7LTXnvLi8Ri5kSOHgm1FbjZKr7OwlvlwyfZu44LTuaN4mK0RGLu8w1wA=='
   FREELANCER_GUID = '100b89a2-0c48-4ef0-9d14-492b1290f243'
@@ -25,6 +25,8 @@ class HomeController < ApplicationController
     import_data
 
     client.disconnect
+
+    redirect_to posts_path
   end
 
   private
