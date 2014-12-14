@@ -1,0 +1,2 @@
+class OdeskPost
+end

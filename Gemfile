@@ -25,6 +25,7 @@ gem "http-cookie"
 gem 'importio'
 gem 'activerecord-postgres-hstore'
 gem 'slim'
+gem 'httparty'
 
 group :development do
   gem "spring"
