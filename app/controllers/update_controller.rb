@@ -1,4 +1,3 @@
-require './lib/importio.rb'
 
 class UpdateController < ApplicationController
   QUERIES = ['Ruby_on_Rails', 'Ruby']
