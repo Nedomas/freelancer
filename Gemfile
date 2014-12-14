@@ -27,7 +27,6 @@ gem 'activerecord-postgres-hstore'
 gem 'slim'
 gem 'httparty'
 gem 'andand'
-gem 'unicorn'
 
 group :development do
   gem "spring"
