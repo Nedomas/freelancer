@@ -1,14 +1,15 @@
 h1 Posts for '#{@tag.term}'
+h3 = link_to 'UPDATE', update_tag_path(@tag)
 
 table
   tr
-    th Title
-    th Tags
-    th Description
+    th width='15%' Title
+    th width='15%' Tags
+    th width='55%' Description
     th Portal
     th Accept bucket
     th Reject
-  - @tag.posts.each do |post|
+  - @tag_posts.each do |post|
     tr
       td
         a href=post.url target='_blank'

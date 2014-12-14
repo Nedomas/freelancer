@@ -1,4 +1,4 @@
-class FreelancerPost
+class ElancePost
   def initialize(post)
     @post = post
   end
@@ -22,6 +22,6 @@ class FreelancerPost
   private
 
   def raw_tags
-    @post.data['skills_link/_text']
+    @post.data['skills'].andand.split
   end
 end

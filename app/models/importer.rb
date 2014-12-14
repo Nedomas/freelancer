@@ -4,7 +4,7 @@ class Importer
   end
 
   def import
-    %i(freelancer odesk).each do |portal|
+    %i(freelancer odesk elance).each do |portal|
       single_importer = SinglePortalImporter.new(portal)
       single_importer.import(@tag)
     end

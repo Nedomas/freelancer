@@ -1,25 +1,7 @@
 class Post < ActiveRecord::Base
   serialize :data
 
-  def title
-    data['title/_text']
-  end
-
-  def description
-    data['description']
-  end
-
-  def url
-    data['title']
-  end
-
-  def tags
-    Array(raw_tags).join(', ')
-  end
-
-  private
-
-  def raw_tags
-    data['skills_link/_text']
+  def method_missing(name, *args)
+    super rescue "#{portal}Post".classify.constantize.new(self).send(name)
   end
 end

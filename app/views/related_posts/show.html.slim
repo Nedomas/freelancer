@@ -3,6 +3,6 @@ h4 = @post.title
 
 = simple_form_for @related_post do |f|
   = f.input :notes
-  = f.association :post
+  = f.association :post, label_method: :title
   = f.association :bucket
   = f.button :submit

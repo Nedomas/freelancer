@@ -26,6 +26,7 @@ gem 'importio'
 gem 'activerecord-postgres-hstore'
 gem 'slim'
 gem 'httparty'
+gem 'andand'
 
 group :development do
   gem "spring"

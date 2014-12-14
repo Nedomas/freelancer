@@ -9,7 +9,7 @@ class RelatedPostsController < ApplicationController
 
     flash[:notice] = 'Post added'
 
-    redirect_to posts_path
+    redirect_to :back
   end
 
   def reject
@@ -18,7 +18,7 @@ class RelatedPostsController < ApplicationController
 
     flash[:notice] = 'Post rejected'
 
-    redirect_to posts_path
+    redirect_to :back
   end
 
   private

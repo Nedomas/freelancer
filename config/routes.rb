@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :buckets
   resources :posts
   resources :tags
-  get 'update/index', as: :update
+  get 'tag/update/:id' => 'tags#update', as: :update_tag
   resources :related_posts
   get 'related_posts/reject/:id' => 'related_posts#reject', as: :reject_related_post
 end

@@ -8,7 +8,7 @@ class SinglePortalImporter
   end
 
   def import(tag)
-    (1..2).each do |page|
+    (1..3).each do |page|
       page_import(tag, page)
     end
   end
