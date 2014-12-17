@@ -1,27 +1,13 @@
-class FreelancerPost
-  def initialize(post)
-    @post = post
-  end
-
-  def title
-    @post.data['title/_text']
-  end
-
-  def description
-    @post.data['description']
-  end
-
-  def url
-    @post.data['title']
-  end
-
+class FreelancerPost < BasePost
   def tags
-    Array(raw_tags).join(', ')
+    @post.data['skills']
   end
 
-  private
+  def budget
+    @post.data['price/source'].andand.join || 'No budget'
+  end
 
-  def raw_tags
-    @post.data['skills_link/_text']
+  def posted
+    ''
   end
 end

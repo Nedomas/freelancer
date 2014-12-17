@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20141214173906) do
 
   create_table "posts", force: true do |t|
     t.string   "portal"
+    t.text     "url"
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"

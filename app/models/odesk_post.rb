@@ -1,27 +1,13 @@
-class OdeskPost
-  def initialize(post)
-    @post = post
-  end
-
-  def title
-    @post.data['title/_text']
-  end
-
-  def description
-    @post.data['description']
-  end
-
-  def url
-    @post.data['title']
+class OdeskPost < BasePost
+  def budget
+    "#{@post.data['type']} #{@post.data['budget']}"
   end
 
   def tags
-    Array(raw_tags).join(', ')
+    @post.data['tags'].andand.split
   end
 
-  private
-
-  def raw_tags
-    @post.data['skills'].andand.split
+  def posted
+    @post.data['posted']
   end
 end

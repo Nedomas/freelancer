@@ -1,17 +1,13 @@
-h1 For bucket: #{@bucket.name}
+h1 = @bucket.name
 
-
-table
-  tr
-    th Title
-    th Tags
-    th Description
-    th Portal
-  - @bucket.posts.each do |post|
+table.table.table-striped
+  - @bucket.related_posts.each do |related_post|
     tr
       td
-        a href=post.url target='_blank'
-          = post.title
-      td = post.tags
-      td = post.description
-      td = post.portal.capitalize
+        a href=related_post.post.url target='_blank'
+          = related_post.post.title
+      td
+        = link_to "Move to bidded", related_post_path(related_post.post), class: 'btn btn-xs btn-success'
+        = link_to "Reject", reject_related_post_path(related_post.post), class: 'btn btn-xs btn-danger'
+      td
+        = related_post.notes

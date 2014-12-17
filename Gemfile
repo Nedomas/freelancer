@@ -3,7 +3,6 @@ source "https://rubygems.org"
 ruby "2.1.2"
 
 gem "airbrake"
-gem "bourbon", "~> 3.2.1"
 gem "coffee-rails"
 gem "delayed_job_active_record"
 gem "email_validator"
@@ -11,7 +10,6 @@ gem "flutie"
 gem "high_voltage"
 gem "i18n-tasks"
 gem "jquery-rails"
-gem "neat", "~> 1.5.1"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg"
 gem "rails", "4.1.4"
@@ -27,7 +25,9 @@ gem 'activerecord-postgres-hstore'
 gem 'slim'
 gem 'httparty'
 gem 'andand'
+gem 'rack-timeout'
 
+gem "twitter-bootstrap-rails"
 group :development do
   gem "spring"
   gem "spring-commands-rspec"
@@ -39,6 +39,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
+  gem 'pry-stack_explorer'
   gem "rspec-rails", "~> 3.0.0"
 end
 

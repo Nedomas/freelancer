@@ -1,0 +1,14 @@
+h2
+  a href=post.url target='_blank'
+    = post.title
+h2
+  small
+    =' "#{post.portal.capitalize}"
+p = kbd(post.tags)
+p.lead = "Budget: #{post.budget}"
+
+p = post.description
+
+- if post.posted.present?
+  h6 = "Posted: #{post.posted}"
+h6 = "Scraped: #{post.updated_at.strftime('%F %R')}"

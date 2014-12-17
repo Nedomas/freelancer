@@ -1,4 +1,9 @@
-h1 Tags
-
 - @tags.each do |tag|
-  p = link_to tag.term, tag_path(tag)
+  h4
+    = link_to kbd(tag.term), tag_path(tag)
+
+= simple_form_for @tag do |f|
+  = f.input :term, wrapper: :horizontal_input_group do
+    = f.input_field :term, class: 'form-control'
+    span.input-group-btn
+      = f.button :submit

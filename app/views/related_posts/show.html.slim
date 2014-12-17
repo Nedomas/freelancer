@@ -1,8 +1,9 @@
-h1 Add to bucket for
-h4 = @post.title
+.row.text-center
+  .col-md-5
+    = simple_form_for(@related_post, html: { class: 'form-horizontal' }) do |f|
+      = f.input :notes
+      = f.association :post, as: :hidden
+      = f.association :bucket, as: :hidden
+      = f.submit 'To consider bucket', class: 'btn btn-lg btn-success'
 
-= simple_form_for @related_post do |f|
-  = f.input :notes
-  = f.association :post, label_method: :title
-  = f.association :bucket
-  = f.button :submit
+= render partial: 'shared/post', locals: { post: @post }

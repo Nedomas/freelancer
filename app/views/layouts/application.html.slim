@@ -1,0 +1,27 @@
+doctype
+html
+  head
+    meta[charset="utf-8"]
+    meta[name="ROBOTS" content="NOODP"]
+    meta[name="viewport" content="initial-scale=1"]
+    title Aggregatin freelancin
+    = stylesheet_link_tag :application, media: "all"
+    = csrf_meta_tags
+  body
+    .container
+      .col-md-offset-2.col-md-8
+        nav.navbar.navbar-default[role="navigation"]
+          .container-fluid
+            .navbar-header
+              = link_to "Freelancer", tags_path, class: 'navbar-brand'
+              ul.nav.navbar-nav
+                li
+                  = link_to "Tags", tags_path
+                - %i(considering bidded rejected).each do |bucket_name|
+                  - bucket = Bucket.send(bucket_name)
+                  li
+                    = link_to bucket.name, bucket_path(bucket)
+
+        = render "flashes"
+        = yield
+        = render "javascript"

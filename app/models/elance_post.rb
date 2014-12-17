@@ -1,27 +1,19 @@
-class ElancePost
-  def initialize(post)
-    @post = post
-  end
-
-  def title
-    @post.data['title/_text']
-  end
-
-  def description
-    @post.data['description']
-  end
-
-  def url
-    @post.data['title']
+class ElancePost < BasePost
+  def budget
+    @post.data['budget']
   end
 
   def tags
-    Array(raw_tags).join(', ')
+    [@post.data['category'], @post.data['subcategory'], raw_skills].flatten
+  end
+
+  def posted
+    ''
   end
 
   private
 
-  def raw_tags
-    @post.data['skills'].andand.split
+  def raw_skills
+    @post.data['skills'].split(',').map(&:strip)
   end
 end

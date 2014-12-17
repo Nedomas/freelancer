@@ -1,22 +1,24 @@
 class RelatedPostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
-    @related_post = RelatedPost.new(post: @post, bucket: todo_bucket)
+    @related_post = RelatedPost.new(post: @post, bucket: Bucket.considering)
+    session[:return_to] ||= request.referer
   end
 
   def create
-    RelatedPost.create(permitted_params)
+    related_post = RelatedPost.create(permitted_params)
 
-    flash[:notice] = 'Post added'
+    flash[:notice] = "Post considered: #{related_post.post.title}"
 
-    redirect_to :back
+    redirect_to session.delete(:return_to) || :back
   end
 
   def reject
     @post = Post.find(params[:id])
-    RelatedPost.create(post: @post, bucket: rejected_bucket)
+    related_post = RelatedPost.find_or_initialize_by(post: @post)
+    related_post.update(bucket: Bucket.rejected)
 
-    flash[:notice] = 'Post rejected'
+    flash[:notice] = "Post rejected: #{@post.title}"
 
     redirect_to :back
   end
@@ -25,13 +27,5 @@ class RelatedPostsController < ApplicationController
 
   def permitted_params
     params[:related_post].permit(:notes, :post_id, :bucket_id)
-  end
-
-  def todo_bucket
-    Bucket.where(name: 'Todo').first_or_create
-  end
-
-  def rejected_bucket
-    Bucket.where(name: 'Rejected').first_or_create
   end
 end

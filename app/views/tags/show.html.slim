@@ -1,21 +1,10 @@
-h1 Posts for '#{@tag.term}'
-h3 = link_to 'UPDATE', update_tag_path(@tag)
+h1
+  = kbd(@tag.term)
+  =' link_to 'UPDATE', update_tag_path(@tag), class: 'btn btn-info pull-right'
 
-table
-  tr
-    th width='15%' Title
-    th width='15%' Tags
-    th width='55%' Description
-    th Portal
-    th Accept bucket
-    th Reject
-  - @tag_posts.each do |post|
-    tr
-      td
-        a href=post.url target='_blank'
-          = post.title
-      td = post.tags
-      td = post.description
-      td = post.portal.capitalize
-      td = link_to "Accept", related_post_path(post)
-      td = link_to "Reject", reject_related_post_path(post)
+- @tag_posts.each do |post|
+  = render partial: 'shared/post', locals: { post: post }
+  .actions.row.text-center
+      = link_to "Consider", related_post_path(post), class: 'btn btn-lg btn-success'
+      = link_to "More info", post.url, class: 'btn btn-lg btn-info', target: '_blank'
+      = link_to "Reject", reject_related_post_path(post), class: 'btn btn-lg btn-danger'

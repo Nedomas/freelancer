@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'posts#index'
+  root 'tags#index'
 
   resources :buckets
   resources :posts

@@ -1,8 +1,7 @@
-require './lib/importio.rb'
-
 class TagsController < ApplicationController
   def index
     @tags = Tag.all
+    @tag = Tag.new
   end
 
   def show
@@ -10,6 +9,7 @@ class TagsController < ApplicationController
     @tag_posts = @tag.posts.reject do |post|
       categorized_post_ids.include?(post.id)
     end
+    @tag_posts.sort_by!(&:updated_at).reverse!
   end
 
   def update
@@ -19,7 +19,7 @@ class TagsController < ApplicationController
 
   def create
     tag = Tag.where(permitted_params).first_or_create
-    Importer.new(tag).import
+    Importer::Manager.new(tag).import
 
     flash[:notice] = 'Tag has been imported'
 
