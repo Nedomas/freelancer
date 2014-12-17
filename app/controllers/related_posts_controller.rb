@@ -23,6 +23,16 @@ class RelatedPostsController < ApplicationController
     redirect_to :back
   end
 
+  def move_to_bidded
+    @post = Post.find(params[:id])
+    related_post = RelatedPost.find_or_initialize_by(post: @post)
+    related_post.update(bucket: Bucket.bidded)
+
+    flash[:notice] = "Post moved to bidded: #{@post.title}"
+
+    redirect_to :back
+  end
+
   private
 
   def permitted_params

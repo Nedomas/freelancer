@@ -7,7 +7,7 @@ table.table.table-striped
         a href=related_post.post.url target='_blank'
           = related_post.post.title
       td
-        = link_to "Move to bidded", related_post_path(related_post.post), class: 'btn btn-xs btn-success'
-        = link_to "Reject", reject_related_post_path(related_post.post), class: 'btn btn-xs btn-danger'
-      td
         = related_post.notes
+      td
+        = link_to "Move to bidded", move_to_bidded_path(related_post.post), class: 'btn btn-xs btn-success'
+        = link_to "Reject", reject_related_post_path(related_post.post), class: 'btn btn-xs btn-danger'
