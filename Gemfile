@@ -23,6 +23,7 @@ gem 'sucker_punch'
 gem 'httparty'
 gem 'andand'
 gem 'rack-timeout'
+gem 'nokogiri'
 
 gem "twitter-bootstrap-rails"
 group :development do

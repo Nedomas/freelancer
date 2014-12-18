@@ -1,6 +1,6 @@
 class FreelancerPost < BasePost
   def tags
-    @post.data['skills']
+    Nokogiri::HTML(@post.data['skills']).css('li').map(&:text).map(&:strip)
   end
 
   def budget
