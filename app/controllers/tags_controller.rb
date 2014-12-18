@@ -7,7 +7,7 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @tag_posts = @tag.posts.reject do |post|
-      categorized_post_ids.include?(post.id)
+      categorized_post_ids.include?(post.id) or !post.data
     end
     @tag_posts.sort_by!(&:updated_at).reverse!
   end
