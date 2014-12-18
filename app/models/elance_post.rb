@@ -14,6 +14,6 @@ class ElancePost < BasePost
   private
 
   def raw_skills
-    @post.data['skills'].split(',').map(&:strip)
+    (@post.data['skills'] || '').split(',').map(&:strip)
   end
 end

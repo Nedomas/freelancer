@@ -8,7 +8,7 @@ module Importer
 
     def import
       urls.each do |url|
-        next if Post.any? { |post| post.url == url }
+        next unless Post.where(url: url).count.zero?
 
         resp = Importer::ImportioWrapper.query(url, portal_importer.single_guid)
         save_full_data(url, resp)

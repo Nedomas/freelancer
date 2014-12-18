@@ -22,7 +22,6 @@ module Importer
         callback)
 
         @client.join
-        @client.disconnect
 
         @last_response
       end
