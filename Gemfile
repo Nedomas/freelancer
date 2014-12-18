@@ -2,17 +2,14 @@ source "https://rubygems.org"
 
 ruby "2.1.2"
 
-gem "airbrake"
 gem "coffee-rails"
-gem "delayed_job_active_record"
 gem "email_validator"
 gem "flutie"
-gem "high_voltage"
 gem "i18n-tasks"
 gem "jquery-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg"
-gem "rails", "4.1.4"
+gem "rails", "4.2.0.rc3"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 4.0.3"
 gem "simple_form"
@@ -21,8 +18,8 @@ gem "uglifier"
 gem "unicorn"
 gem "http-cookie"
 gem 'importio'
-gem 'activerecord-postgres-hstore'
 gem 'slim'
+gem 'sucker_punch'
 gem 'httparty'
 gem 'andand'
 gem 'rack-timeout'

@@ -19,9 +19,9 @@ class TagsController < ApplicationController
 
   def create
     tag = Tag.where(permitted_params).first_or_create
-    Importer::Manager.new(tag).import
+    ScrapePortalsJob.perform_later(tag)
 
-    flash[:notice] = 'Tag has been imported'
+    flash[:notice] = 'Wait a sec till the tag is imported'
 
     redirect_to tag_path(tag)
   end
