@@ -1,6 +1,9 @@
 h2
   a href=post.url target='_blank'
     = post.title
+  p
+    => link_to "Consider", move_to_path('considering', post), class: 'btn btn-success'
+    => link_to "Reject", move_to_path('rejected', post), class: 'btn btn-danger'
 h2
   small
     =' "#{post.portal.capitalize}"

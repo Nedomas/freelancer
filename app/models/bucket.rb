@@ -1,6 +1,12 @@
 class Bucket < ActiveRecord::Base
   has_many :related_posts
 
+  TYPES = {
+    considering: 'success',
+    bidded: 'info',
+    rejected: 'danger',
+  }.freeze
+
   def posts
     related_posts.map(&:post)
   end

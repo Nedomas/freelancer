@@ -9,5 +9,5 @@ table.table.table-striped
       td
         = related_post.notes
       td
-        = link_to "Move to bidded", move_to_bidded_path(related_post.post), class: 'btn btn-xs btn-success'
-        = link_to "Reject", reject_related_post_path(related_post.post), class: 'btn btn-xs btn-danger'
+        - @types.each do |(type, klass)|
+          = link_to "Move to #{type.capitalize}", send("move_to_path", type, related_post.post), class: "btn btn-xs btn-#{klass}"

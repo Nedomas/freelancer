@@ -5,6 +5,17 @@ class RelatedPostsController < ApplicationController
     session[:return_to] ||= request.referer
   end
 
+  def move_to
+    @post = Post.find(params[:post_id])
+    bucket = Bucket.find_by(name: params[:bucket].capitalize)
+    related_post = RelatedPost.find_or_initialize_by(post: @post)
+    related_post.update(bucket: bucket)
+
+    flash[:notice] = "Post moved to #{bucket.name}: #{@post.title}"
+
+    redirect_to :back
+  end
+
   def create
     related_post = RelatedPost.create(permitted_params)
 
